@@ -8,5 +8,5 @@ Note: Name your app lab8
 
 A figma file is included
 
-<img width="893" alt="Screen Shot 2022-12-05 at 1 55 55 PM" src="https://user-images.githubusercontent.com/74452750/205620716-8036a948-fd53-47cb-b5b8-c4bee5b5d9d0.png">
 
+<img width="910" alt="Screen Shot 2022-12-05 at 2 36 44 PM" src="https://user-images.githubusercontent.com/74452750/205628163-bc3c1f05-c232-417d-a316-2692a1e8c556.png">
