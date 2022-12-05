@@ -1,12 +1,16 @@
-# lab-8
+# labkhuloudlab8
 
-Using Flutter to create the Location App, the design is below, you can be creative. Still, you need to stick to the main objects in the image.
+A new Flutter project.
 
-### Your app should never return to the Welcome page unless the user log out.
+## Getting Started
 
-Note: Name your app lab8
+This project is a starting point for a Flutter application.
 
-A figma file is included
+A few resources to get you started if this is your first Flutter project:
 
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-<img width="910" alt="Screen Shot 2022-12-05 at 2 36 44 PM" src="https://user-images.githubusercontent.com/74452750/205628163-bc3c1f05-c232-417d-a316-2692a1e8c556.png">
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
