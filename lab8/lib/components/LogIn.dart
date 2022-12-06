@@ -58,22 +58,19 @@ class _LogInState extends State<LogIn> {
             }
           },
         ),
-        Padding(
-          padding: const EdgeInsets.only(right: 70),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Checkbox(
-                value: check,
-                onChanged: (bool? value) {
-                  setState(() {
-                    check = value!;
-                  });
-                },
-              ),
-              Text("Remember me")
-            ],
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Checkbox(
+              value: check,
+              onChanged: (bool? value) {
+                setState(() {
+                  check = value!;
+                });
+              },
+            ),
+            Text("Remember me")
+          ],
         )
       ],
     );
