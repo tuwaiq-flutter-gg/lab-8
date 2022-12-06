@@ -98,14 +98,25 @@ class _homeState extends State<HomePage> {
                           height: 25,
                         ),
                         CustomButton(
-                          title: "Print It Out",
-                          onPressed: () {
-                            AlertDialog(
-                              content: Text("$position"),
-                            );
-                            setState(() {});
-                          },
-                        ),
+                            title: "Print It Out",
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                  backgroundColor: latGrean,
+                                  insetPadding: EdgeInsets.zero,
+                                  content: Text(
+                                    "Your Location is \n\n${position.toString()}",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontSize: 30,
+                                      color: textColor,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }),
                         Text("$position"),
                         SizedBox(
                           height: 50,
