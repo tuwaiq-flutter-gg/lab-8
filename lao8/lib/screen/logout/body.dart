@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lao8/Components/custom.dart';
 import 'package:lao8/Components/style.dart';
 
-class getlocation extends StatelessWidget {
-  const getlocation({super.key});
+class logout extends StatelessWidget {
+  const logout({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,14 @@ class getlocation extends StatelessWidget {
                           color: whait,
                           fontWeight: FontWeight.bold),
                     ),
-                    Image.asset('assetst/out.png'),
+                    InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => logout()));
+                        },
+                        child: Image.asset('assetst/out.png')),
                   ],
                 ),
               ),
@@ -42,42 +49,27 @@ class getlocation extends StatelessWidget {
                     Container(
                       child: Column(
                         children: [
-                          Image.asset('assetst/loc.png'),
-                          Image.asset('assetst/flag.png'),
+                          Text(
+                            ' Confirrm your log out please !',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          ),
                           SizedBox(
-                            height: 20,
+                            height: 40,
                           ),
-                          Text(
-                            'This app will help you locate your',
-                            style: TextStyle(
-                                color: textfiledcolor2,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
+                          customTextFeild(
+                            hinttext: 'Password',
                           ),
-                          Text(
-                            ' place and print out easil',
-                            style: TextStyle(
-                                color: textfiledcolor2,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
+                          SizedBox(
+                            height: 40,
                           ),
+                          coustombuttom(
+                            Title: "Logout",
+                            ontap: () {},
+                          )
                         ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 130,
-                    ),
-                    Container(
-                      padding: EdgeInsets.all(20),
-                      height: 180,
-                      width: MediaQuery.of(context).size.width,
-                      color: textfiledcolor1,
-                      child: Center(
-                        child: Column(
-                          children: [
-                          
-                          ],
-                        ),
                       ),
                     ),
                   ],

@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:lao8/Components/custom.dart';
 import 'package:lao8/Components/style.dart';
-import 'package:lao8/screen/getlocation/getlocation.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:lao8/screen/getlocation/formlocation.dart';
+import 'package:lao8/screen/logout/body.dart';
 
-class location extends StatelessWidget {
+
+class location extends StatefulWidget {
   const location({super.key});
 
+  @override
+  State<location> createState() => _locationState();
+}
+
+class _locationState extends State<location> {
+   Position? position;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +39,14 @@ class location extends StatelessWidget {
                           color: whait,
                           fontWeight: FontWeight.bold),
                     ),
-                    Image.asset('assetst/out.png'),
+                     InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => logout()));
+                        },
+                        child: Image.asset('assetst/out.png')),
                   ],
                 ),
               ),
@@ -90,18 +106,28 @@ class location extends StatelessWidget {
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
+                                       Text(
+                              '$position!',
+                              style: TextStyle(
+                                  color: textfiledcolor2,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold),
+                            ),
                             SizedBox(
                               height: 50,
                             ),
                             coustombuttom(
                               Title: "Print it out",
-                              ontap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => getlocation(),
-                                    ));
-                              },
+                              ontap: (() async {
+              try {
+                determinePosition();
+                position = await Geolocator.getCurrentPosition(
+                    desiredAccuracy: LocationAccuracy.high);
+              } catch (erorr) {
+                print(erorr);
+              }
+              setState(() {});
+            }),
                             )
                           ],
                         ),
