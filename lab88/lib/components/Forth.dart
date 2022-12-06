@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -13,7 +15,7 @@ class Forth extends StatefulWidget {
 }
 
 class _ForthState extends State<Forth> {
-  Uri url = Uri.parse('https://www.google.com/maps/@,45.081137,5z');
+  Uri? url;
 
   Position? position;
   @override
@@ -44,12 +46,11 @@ class _ForthState extends State<Forth> {
                     padding: const EdgeInsets.only(left: 111),
                     child: InkWell(
                         onTap: (() {
-
-Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const Five()),);
-    
-
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Five()),
+                          );
                         }),
                         child: Container(
                             child:
@@ -74,7 +75,14 @@ Navigator.push(
                             try {
                               position = await Geolocator.getCurrentPosition(
                                   desiredAccuracy: LocationAccuracy.high);
-                              setState(() {});
+                              setState(() {
+
+  url = Uri.parse(
+                          'https://www.google.com/maps/search/?api=1query=${position!.altitude},${position!.longitude}');
+                        launchUrl(url=Uri.parse(
+                          'https://www.google.com/maps/search/?api=1query=${position!.altitude},${position!.longitude}'));   
+
+                              });
                             } catch (error) {
                               print(error);
                             }
@@ -86,11 +94,12 @@ Navigator.push(
 
               ElevatedButton(
                   onPressed: () {
-                    launchUrl(url);
-
+                    
                     setState(() {
+                     
                       url = Uri.parse(
                           'https://www.google.com/maps/search/?api=1query=${position!.altitude},${position!.longitude}');
+                        launchUrl(url!);   
                     });
                   },
                   child: Container(
