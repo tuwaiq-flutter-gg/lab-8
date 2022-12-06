@@ -1,0 +1,136 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:geolocator/geolocator.dart';
+
+
+
+
+class LocationPage extends StatefulWidget {
+  const LocationPage({super.key});
+
+  @override
+  State<LocationPage> createState() => _LocationPageState();
+}
+
+class _LocationPageState extends State<LocationPage> {
+  Position? position;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+          title: Text(
+            "Home",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          centerTitle: true,
+          actions: <Widget>[
+            TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LogOutPage()));
+                }
+          ]
+          Text(
+    
+            style: TextStyle(
+                color: Color.gray,
+                fontSize: 15,
+                fontWeight: FontWeight.bold),
+          ),
+          SizedBox(
+            height: 25,
+          ),
+          Container(
+            width: 200,
+            height: 220,
+            color: Color.gray,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "If you need your location you can see it now!",
+                  style: TextStyle(
+                      color: Color.gray,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 100),
+                  child: Container(
+                    width: 120,
+                    height: 55,
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        try {
+                          await determinePosition();
+                          position = await Geolocator.getCurrentPosition(
+                              desiredAccuracy: LocationAccuracy.high);
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  buttonPadding: EdgeInsets.all(5),
+                                  backgroundColor: Color.gray,
+                                  content: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        "Your location is:",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize:30,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      SizedBox(
+                                        height: 30,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 50),
+                                        child: Text(
+                                          position.toString(),
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 200,
+                                      ),
+                                    ],
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(20.0)),
+                                );
+                              });
+                        } catch (error) {
+                          print("Error");
+                        }
+                      },
+                      child: Text(
+                        "Print it out",
+                        style: TextStyle(
+                            fontSize: 30, fontWeight: FontWeight.bold),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.gray,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      )),
+    );
+  }
+}

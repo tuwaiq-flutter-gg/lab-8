@@ -1,0 +1,64 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:geolocator/geolocator.dart';
+import 'dart:html';
+
+
+class logout extends StatefulWidget {
+  const logout({super.key});
+
+  @override
+  State<logout> createState() => _logoutState();
+}
+
+class _logoutState extends State<logout> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(backgroundColor: Color.green ,
+        title:Text( "Log Out" , style: TextStyle(color: Colors.white , fontSize: 20 , fontWeight: FontWeight.bold),
+      ),
+      centerTitle: true,
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top:60),
+                child: Text("confirm your log out please ! " ,style: TextStyle(fontWeight: FontWeight.bold),),
+              ),
+              
+            ),
+            SizedBox(height: 30,),
+            Container(
+              height: 50,
+              width: MediaQuery.of(context).size.width-50,
+              child: TextField(
+                decoration: InputDecoration(
+                  
+                  labelText: "Password",
+                  filled: true,
+                  fillColor:  Color.gray,
+              ),
+            ),
+            SizedBox(height: 10,),
+            Container(
+              height: 44,
+              width: 110,
+              color: Color.gray ,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: Color.gray,
+                onPressed: (){
+                  Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => welcomepage()));
+                }, child: Text("Log Out ",style: TextStyle(fontWeight: FontWeight.bold))),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
