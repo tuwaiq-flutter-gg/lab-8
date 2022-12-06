@@ -1,0 +1,68 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:geolocator/geolocator.dart';
+import 'dart:html';
+
+class welcomepage extends StatefulWidget {
+  const welcomepage({super.key});
+
+  @override
+  State<welcomepage> createState() => _welcomepageState();
+}
+
+class _welcomepageState extends State<welcomepage> {
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      
+      length: 3,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Column(children: [
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 30),
+              child: Text(
+                "Welcome",
+                style: TextStyle(color: Color.gray),
+              ),
+            ),
+          ),
+          Container(
+            height: 110,
+            width: 110,
+            child: Image.asset("images/download.jpg"),
+          ),
+          TabBar(
+            indicator: BoxDecoration(color: Color.gray ),
+            
+            tabs: [
+            Tab(
+              
+              text: "Log in" ,
+              
+              
+            ),
+            Tab(
+              text: "Sign Up",
+            ),
+          ]
+          ),
+         Expanded(child:  TabBarView(children: [
+           logintab(),
+            signuptab(),
+           
+          ]))
+         
+          
+              ],
+              
+            ),
+            
+          ),
+        )
+      
+    ;
+  }
+}
